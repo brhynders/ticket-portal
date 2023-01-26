@@ -16,7 +16,7 @@
           parseInt(_currentWebsite.expand.hosting_plan.tickets_per_month) -
           parseInt(_currentWebsite.submitted_tickets),
         max_tickets: _currentWebsite.expand.hosting_plan.tickets_per_month,
-        name: _currentWebsite.name,
+        name: _currentWebsite.domain,
         hosting_plan: _currentWebsite.expand.hosting_plan,
       });
     }
