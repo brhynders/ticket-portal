@@ -1,14 +1,13 @@
 <script>
-  let current = "tickets";
+  import { isActive } from "@roxi/routify";
 </script>
 
 <div>
   <ul class="list-reset lg:flex flex-1 items-center">
     <li class="mr-6 my-2 md:my-0">
       <a
-        on:click={() => (current = "tickets")}
         href="/dashboard"
-        class="{current == 'tickets'
+        class="{$isActive('/dashboard/index', {}, { strict: true })
           ? 'border-blue-600 text-blue-600'
           : 'text-gray-500 hover:text-gray-900'} block py-1 md:py-3 pl-1 align-middle no-underline border-b-2 hover:border-blue-600 flex items-center"
       >
@@ -19,9 +18,8 @@
     </li>
     <li class="mr-6 my-2 md:my-0">
       <a
-        on:click={() => (current = "new ticket")}
         href="/dashboard/new-ticket"
-        class="{current == 'new ticket'
+        class="{$isActive('/dashboard/new-ticket')
           ? 'border-blue-600 text-blue-600'
           : 'text-gray-500 hover:text-gray-900'} block py-1 md:py-3 pl-1 align-middle no-underline border-b-2 border-white hover:border-blue-600 flex items-center"
       >
@@ -32,9 +30,8 @@
     </li>
     <li class="mr-6 my-2 md:my-0">
       <a
-        on:click={() => (current = "account")}
         href="/dashboard/account"
-        class="{current == 'account'
+        class="{$isActive('/dashboard/account')
           ? 'border-blue-600 text-blue-600'
           : 'text-gray-500 hover:text-gray-900'} block py-1 md:py-3 pl-1 align-middle no-underline border-b-2 border-white hover:border-blue-600 flex items-center"
       >
@@ -45,9 +42,8 @@
     </li>
     <li class="mr-6 my-2 md:my-0">
       <a
-        on:click={() => (current = "help")}
         href="/dashboard/help"
-        class="{current == 'help'
+        class="{$isActive('/dashboard/help')
           ? 'border-blue-600 text-blue-600'
           : 'text-gray-500 hover:text-gray-900'} block py-1 md:py-3 pl-1 align-middle no-underline border-b-2 border-white hover:border-blue-600 flex items-center"
       >
