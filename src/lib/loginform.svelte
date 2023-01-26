@@ -7,11 +7,14 @@
   const login = async e => {
     loading = true;
     errors = false;
-    const res = await pb
-      .collection("users")
-      .authWithPassword(email, password)
-      .catch(err => (errors = true));
-    if (res) $goto("/dashboard");
+    try {
+      const res = await pb
+        .collection("users")
+        .authWithPassword(email, password);
+      if (res) $goto("/dashboard");
+    } catch (err) {
+      errors = true;
+    }
     loading = false;
     username = "";
     password = "";
