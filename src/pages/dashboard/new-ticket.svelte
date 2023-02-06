@@ -1,1 +1,1 @@
-<h3>New Ticket</h3>
+<div class="p-3">New Ticket</div>

@@ -6,7 +6,9 @@
 <div class="flex flex-row flex-wrap items-stretch">
   {#if $website.tickets}
     {#each $website.tickets as ticket}
-      <Card name={ticket.ticket_name} />
+      {#if ticket.status !== 2}
+      <Card id={ticket.id} name={ticket.ticket_name} open={ticket.status == 0 ? false : true} items={ticket.items} />
+      {/if}
     {/each}
   {:else}
     <div class="p-3">
@@ -18,7 +20,7 @@
     </div>
   {/if}
   {#if $website.remaining_tickets > 1}
-    <div class="w-full md:w-1/3 p-3">
+    <div class="w-full md:w-1/3 p-3 h-full">
       <div class="bg-blue-600 border rounded shadow">
         <a
           href="/dashboard/new-ticket"
