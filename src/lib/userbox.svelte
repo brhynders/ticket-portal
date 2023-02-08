@@ -19,6 +19,7 @@
         name: _currentWebsite.domain,
         hosting_plan: _currentWebsite.expand.hosting_plan,
       });
+      console.log(_currentWebsite);
     }
   }
 
@@ -26,7 +27,7 @@
     const res = await pb
       .collection("websites")
       .getList(1, 20, {
-        expand: "hosting_plan,tickets(website)",
+        expand: "hosting_plan,tickets(website).ticket_items(ticket_id)",
       })
       .catch(err => console.log(err));
 

@@ -1,13 +1,21 @@
 <script>
   import Card from "../../lib/card.svelte";
   import { website } from "../../stores";
+  import BaseTransition from "@roxi/routify/runtime/decorators/BaseTransition.svelte";
+
+  let bClosedTickets = false;
 </script>
+
+
+<div class="p-3">
+  <h3 class="text-sm text-gray-600 font-bold">Open Tickets</h3>
+</div>
 
 <div class="flex flex-row flex-wrap items-stretch">
   {#if $website.tickets}
     {#each $website.tickets as ticket}
       {#if ticket.status !== 2}
-      <Card id={ticket.id} name={ticket.ticket_name} open={ticket.status == 0 ? false : true} items={ticket.items} />
+      <Card time={ticket.created} id={ticket.id} name={ticket.ticket_name} open={ticket.status == 0 ? false : true} items={ticket.expand['ticket_items(ticket_id)']} />
       {/if}
     {/each}
   {:else}
@@ -33,3 +41,38 @@
     </div>
   {/if}
 </div>
+
+<div class="p-3 flex">
+  <div on:click={() => bClosedTickets = !bClosedTickets} class="flex items-center gap-2 cursor-pointer">  
+      <h3 class="text-sm text-gray-600 font-bold">Closed Tickets</h3>
+      <BaseTransition>
+      {#if bClosedTickets}
+        <i class="fas fa-chevron-up text-md"></i>
+      {:else}
+         <i class="fas fa-chevron-down text-md"></i>
+      {/if}
+      </BaseTransition>
+  </div>
+</div>
+
+{#if bClosedTickets}
+<BaseTransition>
+<div class="flex flex-row flex-wrap items-stretch">
+  {#if $website.tickets}
+    {#each $website.tickets as ticket}
+      {#if ticket.status !== 2}
+      <Card time= {ticket.created} id={ticket.id} name={ticket.ticket_name} open={ticket.status == 0 ? false : true} items={ticket.items} />
+      {/if}
+    {/each}
+  {:else}
+    <div class="p-3">
+      No open tickets for the currently selected website: <span
+        class="font-bold ml-1"
+      >
+        {$website.name}</span
+      >
+    </div>
+  {/if}
+</div>
+</BaseTransition>
+{/if}

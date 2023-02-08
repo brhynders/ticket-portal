@@ -20,7 +20,7 @@
     >
       <Userbox />
       <!-- SLot Content-->
-      <div class="mt-2">
+      <div class="mt-6">
         <slot decorator={BaseTransition} />
       </div>
       <!-- /Slot Content -->

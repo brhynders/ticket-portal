@@ -1,12 +1,9 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"$lib/*": ["src/lib/*"],
-			"$utils/*": ["src/utils/*"],
-			"$stores/*": ["src/stores/*"],
-			"$assets/*": ["src/assets/*"]
-		}
-	},
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "$lib/*": ["src/lib/*"]
+    }
+  }
   // ...
 }
