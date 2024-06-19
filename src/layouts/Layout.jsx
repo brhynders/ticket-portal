@@ -13,7 +13,7 @@ import { pb } from "../state";
 const Header = () => {
   const theme = useMantineTheme();
   return (
-    <Box py={10} bg={theme.colors.blue[6]}>
+    <Box py={10} bg={theme.colors.blue[4]}>
       <Container w="100%" size="lg">
         <Group justify="space-between">
           <Image src="/EWC-logo.png" w={175} />
@@ -33,7 +33,7 @@ const Header = () => {
 const Footer = () => {
   const theme = useMantineTheme();
   return (
-    <Box py={10} bg={theme.colors.blue[6]}>
+    <Box py={10} bg={theme.colors.blue[4]}>
       <Text size="xs" ta="center" c="white">
         Copyright ©️ 2024, Elegant Web Creations. All Rights Reserved.
       </Text>
