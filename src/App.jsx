@@ -10,6 +10,7 @@ import { pb } from "./state";
 import { useEffect, useState } from "react";
 import { Login } from "./pages/Login";
 import { Tickets } from "./pages/Tickets";
+import { Ticket } from "./pages/Ticket";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const Router = () => {
   return (
     <Switch>
       <Route path="/" component={Tickets} />
+      <Route path="/ticket/:id" component={Ticket} />
     </Switch>
   );
 };
